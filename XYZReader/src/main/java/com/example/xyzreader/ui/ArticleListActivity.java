@@ -82,18 +82,26 @@ public class ArticleListActivity extends AppCompatActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = ArticleListActivity.class.toString();
-    /** Key for Intent Extras */
+    /**
+     * Key for Intent Extras
+     */
     public static final String EXTRA_STARTING_POSITION = "extra_starting_position";
     public static final String EXTRA_CURRENT_POSITION = "extra_current_position";
     public static final String EXTRA_PAGE_TRANSFORMATION = "extra_page_transformation";
     public static final String EXTRA_TEXT_SIZE = "extra_text_size";
 
-    /** Member variable for the PageTransformer string */
+    /**
+     * Member variable for the PageTransformer string
+     */
     private String mPageTransformerStr;
-    /** Member variable for text size - small, medium, large, extra_large */
+    /**
+     * Member variable for text size - small, medium, large, extra_large
+     */
     private String mTextSizeStr;
 
-    /** Bundle for result data from ArticleDetailActivity */
+    /**
+     * Bundle for result data from ArticleDetailActivity
+     */
     private Bundle mReenterState;
 
     private Toolbar mToolbar;
@@ -105,14 +113,15 @@ public class ArticleListActivity extends AppCompatActivity implements
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     public static final int XYZ_LOADER_ID = 0;
 
     /**
      * Monitor the Shared element transitions.
-     *
+     * <p>
      * References: @see "https://discussions.udacity.com/t/trouble-implementing-shared-element-transition/674912/19"
+     *
      * @see "https://android.jlelse.eu/dynamic-shared-element-transition-23428f62a2af"
      * @see "https://github.com/alexjlockwood/adp-activity-transitions"
      */
@@ -251,7 +260,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
     /**
      * Rerun the layout animation for RecyclerView.
-     *
+     * <p>
      * Reference: @see "https://proandroiddev.com/enter-animation-using-recyclerview-and-layoutanimation-part-1-list-75a874a5d213"
      */
     private void runLayoutAnimation(RecyclerView recyclerView) {
@@ -269,7 +278,7 @@ public class ArticleListActivity extends AppCompatActivity implements
      *
      * @param resultCode The integer result code returned by the child activity through its
      *                   setResult() which is set when leaving the ArticleDetailActivity
-     * @param data An Intent, which can return result data to the caller
+     * @param data       An Intent, which can return result data to the caller
      */
     @Override
     public void onActivityReenter(int resultCode, Intent data) {
@@ -452,6 +461,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
     /**
      * Show a snackbar message to indicate the network status.
+     *
      * @param isConnected True if connected to the network
      */
     private void showSnackbar(boolean isConnected) {
@@ -554,8 +564,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             } else {
                 holder.subtitleView.setText(Html.fromHtml(
                         outputFormat.format(publishedDate)
-                        + "<br/>" + " by "
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)));
+                                + "<br/>" + " by "
+                                + mCursor.getString(ArticleLoader.Query.AUTHOR)));
             }
 
             // Set text size based on the Value in SharedPreferences
